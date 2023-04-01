@@ -1,0 +1,15 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<suite name = "sauce demo" thread-count="1">
+    <parameter name="browser" value="chrome-headless"/>
+    <test name = "Login tests">
+        <classes>
+            <class name = "tests.Login" />
+        </classes>
+    </test>
+    <test name = "Add to Cart tests">
+        <classes>
+            <class name = "tests.AddToCart" />
+        </classes>
+    </test>
+</suite>

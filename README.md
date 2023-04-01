@@ -1,1 +1,1 @@
-# selenium-java-starter
+# tests-java-starter
