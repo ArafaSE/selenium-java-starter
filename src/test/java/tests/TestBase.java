@@ -35,6 +35,8 @@ public class TestBase {
             chromeOptions.addArguments("--remote-allow-origins=*");
             chromeOptions.addArguments("--disable-gpu");
             chromeOptions.addArguments("--window-size=1920,1080");
+            chromeOptions.addArguments("--no-sandbox");
+            chromeOptions.addArguments("--disable-dev-shm-usage");
             chromeOptions.addArguments("--disable-extensions");
             chromeOptions.addArguments("--ignore-certificate-errors");
             driver = new ChromeDriver(chromeOptions);
