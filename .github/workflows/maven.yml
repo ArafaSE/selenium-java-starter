@@ -35,4 +35,4 @@ jobs:
     
     steps:
     - name: Run regression test suite
-      run: mvn test --file pom.xml
+      run: mvn test
