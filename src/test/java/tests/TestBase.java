@@ -14,7 +14,7 @@ public class TestBase {
     public  String HOME_URL = "https://www.saucedemo.com";
     @BeforeClass
     @Parameters({"browser"})
-    public void startDriver(@Optional("chrome") String browserName) {
+    public void startDriver(@Optional("chrome-headless") String browserName) {
         if (browserName.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
 
