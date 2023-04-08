@@ -36,12 +36,9 @@ public class TestBase {
             chromeOptions.addArguments("--disable-gpu");
             chromeOptions.addArguments("--window-size=1920,1080");
             chromeOptions.addArguments("--disable-extensions");
-            chromeOptions.addArguments("--no-sandbox");
             chromeOptions.addArguments("--ignore-certificate-errors");
-            chromeOptions.addArguments("--allow-running-insecure-content");
             driver = new ChromeDriver(chromeOptions);
         }
-
         driver.navigate().to(HOME_URL);
     }
 
