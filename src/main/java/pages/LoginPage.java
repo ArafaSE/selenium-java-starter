@@ -21,8 +21,8 @@ public class LoginPage extends PageBase{
 
     /********** Page Methods ************/
     public void login(String username, String password){
-        usernameInput.sendKeys(username);
-        passwordInput.sendKeys(password);
-        loginBtn.click();
+        setTextElement(usernameInput, username);
+        setTextElement(passwordInput, password);
+        clickButton(loginBtn);
     }
 }

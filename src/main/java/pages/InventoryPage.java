@@ -23,9 +23,9 @@ public class InventoryPage extends PageBase{
 
     /********** Page Methods ************/
     public void addBackpackToCart(){
-        addBackpackToCartBtn.click();
+        clickButton(addBackpackToCartBtn);
     }
     public void removeBackpackFromCart(){
-        removeBackpackFromCartBtn.click();
+        clickButton(removeBackpackFromCartBtn);
     }
 }
