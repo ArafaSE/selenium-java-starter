@@ -23,14 +23,12 @@ public class TestBase {
             chromeOptions.addArguments("--start-maximized");
 
             driver = new ChromeDriver(chromeOptions);
-
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         }
         // headless browser testing with Chrome headless option
         else if (browserName.equalsIgnoreCase("chrome-headless")) {
             WebDriverManager.chromedriver().setup();
-            ChromeOptions chromeOptions = new ChromeOptions();
 
+            ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.addArguments("--headless");
             chromeOptions.addArguments("--remote-allow-origins=*");
             chromeOptions.addArguments("--disable-gpu");
@@ -39,6 +37,7 @@ public class TestBase {
             chromeOptions.addArguments("--disable-dev-shm-usage");
             chromeOptions.addArguments("--disable-extensions");
             chromeOptions.addArguments("--ignore-certificate-errors");
+
             driver = new ChromeDriver(chromeOptions);
         }
         driver.navigate().to(HOME_URL);
