@@ -1,20 +1,25 @@
 package tests;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
+import pages.BasePage;
+import pages.InventoryPage;
+import pages.LoginPage;
 
-import java.time.Duration;
-
-public class TestBase {
-    public static WebDriver driver;
-    public  String HOME_URL = "https://www.saucedemo.com";
+public class BaseTest {
+    private WebDriver driver;
+    protected BasePage basePage;
+    protected LoginPage loginPage;
+    protected InventoryPage inventoryPage;
+    private final String HOME_URL = "https://www.saucedemo.com";
     @BeforeClass
     @Parameters({"browser"})
-    public void startDriver(@Optional("chrome-headless") String browserName) {
+    public void setUp(@Optional("chrome-headless") String browserName) {
         if (browserName.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
 
@@ -23,6 +28,7 @@ public class TestBase {
             chromeOptions.addArguments("--start-maximized");
 
             driver = new ChromeDriver(chromeOptions);
+            driver.manage().window().maximize();
         }
         // headless browser testing with Chrome headless option
         else if (browserName.equalsIgnoreCase("chrome-headless")) {
@@ -40,12 +46,29 @@ public class TestBase {
 
             driver = new ChromeDriver(chromeOptions);
         }
-        driver.navigate().to(HOME_URL);
     }
 
     @AfterClass
-    public void stopDriver() {
-        driver.close();
+    public void tearDown() {
         driver.quit();
+    }
+
+    @BeforeMethod
+    public void loadApplication(){
+        driver.get(HOME_URL);
+        basePage = new BasePage();
+        basePage.setDriver(driver);
+    }
+    @AfterMethod
+    public void takeScreenshotOnFailures(){
+        // todo
+    }
+
+    protected String getHomURL(){
+        return HOME_URL;
+    }
+
+    protected String getCurrentURL(){
+        return driver.getCurrentUrl();
     }
 }

@@ -4,12 +4,12 @@
     <parameter name="browser" value="chrome-headless"/>
     <test name = "Login tests">
         <classes>
-            <class name = "tests.Login" />
+            <class name = "tests.TC1_Login" />
         </classes>
     </test>
     <test name = "Add to Cart tests">
         <classes>
-            <class name = "tests.AddToCart" />
+            <class name = "tests.TC2_AddToCart" />
         </classes>
     </test>
 </suite>

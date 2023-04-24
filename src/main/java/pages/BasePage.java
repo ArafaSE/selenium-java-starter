@@ -1,31 +1,37 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class PageBase {
-    // create constructor
-    public PageBase(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+public class BasePage {
+    public static WebDriver driver;
+    public void setDriver(WebDriver driver){
+        BasePage.driver = driver;
     }
 
     /******** Generic methods *******/
-    protected void clickButton(WebElement btn) {
-        btn.click();
+    protected WebElement find(By locator){
+        return driver.findElement(locator);
+    }
+    protected void click(By locator) {
+        find(locator).click();
     }
 
-    protected void setTextElement(WebElement TextElement, String textValue) {
-        TextElement.sendKeys(textValue);
+    protected void setText(By locator, String textValue) {
+        find(locator).sendKeys(textValue);
+    }
+    protected String getText(By locator) {
+        return find(locator).getText();
     }
 
-    public void clickEnterKey(WebElement enterElement) {
-        enterElement.sendKeys(Keys.ENTER);
+    protected void clickEnterKey(By locator) {
+        find(locator).sendKeys(Keys.ENTER);
     }
 
     protected void waitUntilElementBeVisible(WebDriver driver, WebElement element) {
@@ -38,7 +44,7 @@ public class PageBase {
         wait.until(ExpectedConditions.invisibilityOf(element));
     }
 
-    public void waitSec(Integer sec) {
+    protected void waitSec(Integer sec) {
         try {
             Thread.sleep(sec * 1000);
         } catch (InterruptedException e) {

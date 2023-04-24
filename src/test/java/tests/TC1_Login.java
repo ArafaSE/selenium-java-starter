@@ -5,12 +5,12 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 
 
-public class Login extends TestBase{
+public class TC1_Login extends BaseTest {
     @Test
     public void user_login_with_valid_credentials() {
-        LoginPage loginPage = new LoginPage(driver);
+        loginPage = new LoginPage();
         loginPage.login("standard_user", "secret_sauce");
 
-        Assert.assertEquals(driver.getCurrentUrl(), HOME_URL + "/inventory.html");
+        Assert.assertEquals(getCurrentURL(), getHomURL() + "/inventory.html");
     }
 }

@@ -1,31 +1,28 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.By;
 
-public class InventoryPage extends PageBase{
-    public InventoryPage(WebDriver driver) {
-        super(driver);
-    }
+public class InventoryPage extends BasePage {
     /*********** Web Elements **********/
-    @FindBy(id = "add-to-cart-sauce-labs-backpack")
-    public
-    WebElement addBackpackToCartBtn;
-
-    @FindBy(id = "remove-sauce-labs-backpack")
-    public
-    WebElement removeBackpackFromCartBtn;
-
-    @FindBy(xpath = "//span[@class='shopping_cart_badge']")
-    public
-    WebElement shoppingCartBadge;
+    private By addBackpackToCartBtn = By.id("add-to-cart-sauce-labs-backpack");
+    private By removeBackpackFromCartBtn = By.id("remove-sauce-labs-backpack");
+    private By shoppingCartBadge = By.xpath("//span[@class='shopping_cart_badge']");
 
     /********** Page Methods ************/
     public void addBackpackToCart(){
-        clickButton(addBackpackToCartBtn);
+        click(addBackpackToCartBtn);
     }
     public void removeBackpackFromCart(){
-        clickButton(removeBackpackFromCartBtn);
+        click(removeBackpackFromCartBtn);
+    }
+
+    public String getShoppingCartBadgeText(){
+        return getText(shoppingCartBadge);
+    }
+    public boolean isRemoveBackpackFromCartBtnDisplayed(){
+        return find(removeBackpackFromCartBtn).isDisplayed();
+    }
+    public boolean isAddBackpackToCartBtnDisplayed(){
+        return find(addBackpackToCartBtn).isDisplayed();
     }
 }

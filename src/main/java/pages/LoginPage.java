@@ -1,28 +1,18 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.By;
 
-public class LoginPage extends PageBase{
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
-
+public class LoginPage extends BasePage {
     /*********** Web Elements **********/
-    @FindBy(id = "user-name")
-    WebElement usernameInput;
-
-    @FindBy(id = "password")
-    WebElement passwordInput;
-
-    @FindBy(id = "login-button")
-    WebElement loginBtn;
+    private By usernameInput = By.id("user-name");
+    private By passwordInput = By.id("password");
+    private By loginBtn = By.id("login-button");
 
     /********** Page Methods ************/
-    public void login(String username, String password){
-        setTextElement(usernameInput, username);
-        setTextElement(passwordInput, password);
-        clickButton(loginBtn);
+    public InventoryPage login(String username, String password){
+        setText(usernameInput, username);
+        setText(passwordInput, password);
+        click(loginBtn);
+        return new InventoryPage();
     }
 }
