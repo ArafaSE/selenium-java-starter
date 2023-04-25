@@ -6,9 +6,6 @@ import pages.InventoryPage;
 import pages.LoginPage;
 
 public class TC2_AddToCart extends BaseTest {
-    LoginPage loginPage;
-    InventoryPage inventoryPage;
-
     @BeforeMethod
     public void initTest(){
         loginPage = new LoginPage();
