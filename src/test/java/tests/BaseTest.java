@@ -11,7 +11,7 @@ import org.testng.log4testng.Logger;
 import pages.BasePage;
 import pages.InventoryPage;
 import pages.LoginPage;
-import utils.Reports;
+import utils.Reporter;
 
 
 public class BaseTest {
@@ -66,8 +66,8 @@ public class BaseTest {
     @AfterMethod
     public void screenshotOnFailure(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
-            System.out.println("Failed! - Taking screenshots..");
-            Reports.captureScreenshot(driver, result.getName());
+            System.out.println("\u001B[40m" + "\u001B[31m" + "Failed! - Taking screenshots.." + "\u001B[0m");
+            Reporter.captureScreenshot(driver, result.getName());
             logger.error(result);
         }
     }

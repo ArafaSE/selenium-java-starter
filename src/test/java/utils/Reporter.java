@@ -11,7 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class Reports {
+public class Reporter {
     // method to take screenshot when Test Case Failed
     public static void captureScreenshot(WebDriver driver, String screenshotName){
         // Get the failure date time
