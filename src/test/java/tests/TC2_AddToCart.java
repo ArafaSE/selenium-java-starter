@@ -2,7 +2,6 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pages.InventoryPage;
 import pages.LoginPage;
 
 public class TC2_AddToCart extends BaseTest {
