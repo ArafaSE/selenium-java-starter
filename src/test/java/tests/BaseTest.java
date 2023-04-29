@@ -5,16 +5,21 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
+import org.testng.log4testng.Logger;
 import pages.BasePage;
 import pages.InventoryPage;
 import pages.LoginPage;
+import utils.Reports;
+
 
 public class BaseTest {
     private WebDriver driver;
     protected BasePage basePage;
     protected LoginPage loginPage;
     protected InventoryPage inventoryPage;
+    public Logger logger = Logger.getLogger(this.getClass());
     private final String HOME_URL = "https://www.saucedemo.com";
     @BeforeClass
     @Parameters({"browser"})
@@ -59,8 +64,12 @@ public class BaseTest {
         basePage.setDriver(driver);
     }
     @AfterMethod
-    public void takeScreenshotOnFailures(){
-        // todo
+    public void screenshotOnFailure(ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            System.out.println("Failed! - Taking screenshots..");
+            Reports.captureScreenshot(driver, result.getName());
+            logger.error(result);
+        }
     }
 
     protected String getHomURL(){

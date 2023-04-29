@@ -27,3 +27,9 @@ hs_err_pid*
 
 # target folder
 target/
+
+# reports folder
+allure-results/
+
+# screenshots folder
+screenshots/
